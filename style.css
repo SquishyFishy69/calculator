@@ -1,0 +1,81 @@
+html, input{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 36px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;   
+    background: lightgray;
+}
+
+.calculator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: grey;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.screen {
+    background: lightblue;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;;
+}
+
+.screen p {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.large-buttons input {
+    width: 150px;   
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 10px 0px;
+    background: orange;
+}
+
+.small-buttons input {
+    width: 64px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 10px 0px;
+    background: orange;
+}
+
+input:hover {
+    opacity: 0.8;
+}
+
+#equal {
+    background: white;
+}
+
+#clear {
+    background: #ff3000;
+}
+
+#delete {
+    background: #0070ff;
+}
+
+footer {
+    font-size: 24px;
+    padding: 10px 0px;
+    background: cornflowerblue;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

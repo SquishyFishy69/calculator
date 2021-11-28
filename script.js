@@ -13,6 +13,7 @@ const operatorMappings = {
     '*': "multiply",
     '/': "divide", 
 };
+const screenText = document.querySelector(".screen p");
 let display = '';
 let firstValue = 0;
 let secondValue = 0;
@@ -30,7 +31,7 @@ document.getElementById("decimal").addEventListener("click", disableDecimal, fal
 function displayNumber(e) {
     if (display.length < 14) {
         display += e.target.value;
-        document.querySelector(".screen p").textContent = display; 
+        screenText.textContent = display; 
     }
 }
 
@@ -50,7 +51,7 @@ function enableSymbol(e) {
         firstValue = +display;
         document.getElementById(e.target.id).style.background = "red";
         display = '';
-        document.querySelector(".screen p").textContent = '0'; 
+        screenText.textContent = '0'; 
         symbol = e.target.id;
     } else if (operatorClicked && display.length > 0) {
         calculate();
@@ -70,7 +71,7 @@ function calculate() {
         display = `${Math.round(answer * 1000) / 1000}`;
         if (display == "Infinity") display = "NICE TRY";
         else if (display.length > 13) display = "TOO LONG"
-        document.querySelector(".screen p").textContent = display;
+        screenText.textContent = display;
         Array.from(document.getElementsByClassName("operator")).forEach(element => element.style.background = "rgba(255, 166, 0, 0.541)");
         firstValue = +display;
         display = '';
@@ -87,7 +88,7 @@ function clear() {
     secondValue = 0;
     operatorClicked = false;
     answer = 0;
-    document.querySelector(".screen p").textContent = "0";
+    screenText.textContent = "0";
     Array.from(document.getElementsByClassName("operator")).forEach(element => element.style.background = "rgba(255, 166, 0, 0.541)");
 }
 
@@ -96,13 +97,14 @@ document.getElementById("delete").addEventListener("click", deleteNumber, false)
 function deleteNumber() {
     if (display.length > 1) {
         display = display.slice(0, -1);
-        document.querySelector(".screen p").textContent = display;
-    } else if (document.querySelector(".screen p").textContent.length > 0) {
-        document.querySelector(".screen p").textContent = document.querySelector(".screen p").textContent.slice(0, -1);
+        screenText.textContent = display;
+    } else if (screenText.textContent.length > 0) {
+        screenText.textContent = screenText.textContent.slice(0, -1);
     } else {
         display = display.slice(0, -1);
-        document.querySelector(".screen p").textContent = "0";
+        screenText.textContent = "0";
     }
+    if (screenText.textContent.length == 0) screenText.textContent = "0";
 }
 
 document.addEventListener("keydown", keyboard, false);
@@ -111,7 +113,7 @@ function keyboard(e) {
     if (+e.key >= 0 && +e.key <= 9 || e.key == ".") {
         if (display.length < 14) {
             display += e.key;
-            document.querySelector(".screen p").textContent = display; 
+            screenText.textContent = display; 
             if (e.key == '.' && decimalDisabled) deleteNumber();
             else if (e.key == '.' && !decimalDisabled) decimalDisabled = true; 
         }
@@ -131,7 +133,7 @@ function keyboardEnableSymbol(keyboardOperator) {
         firstValue = +display;
         document.getElementById(keyboardOperator).style.background = "red";
         display = '';
-        document.querySelector(".screen p").textContent = '0'; 
+        screenText.textContent = '0'; 
         symbol = keyboardOperator;
     } else if (operatorClicked && display.length > 0) {
         calculate();

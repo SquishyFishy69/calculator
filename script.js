@@ -46,6 +46,7 @@ document.getElementById("multiply").addEventListener("click", enableSymbol, fals
 document.getElementById("divide").addEventListener("click", enableSymbol, false);
 
 function enableSymbol(e) {
+    display = screenText.textContent;
     if (!operatorClicked && display.length > 0) {
         operatorClicked = true;
         firstValue = +display;

@@ -52,7 +52,6 @@ function enableSymbol(e) {
         firstValue = +display;
         document.getElementById(e.target.id).style.background = "red";
         display = '';
-        screenText.textContent = '0'; 
         symbol = e.target.id;
     } else if (operatorClicked && display.length > 0) {
         calculate();

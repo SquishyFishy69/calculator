@@ -86,10 +86,6 @@ footer {
     background: rgba(255, 166, 0, 0.541);
 }
 
-.buttons {
-    margin: 0px -10px;
-}
-
 @media only screen and (max-width: 800px) {
     .small-buttons input {
         font-size: 18px;
